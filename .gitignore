@@ -1,0 +1,16 @@
+*.cer
+*.cert
+*.crt
+*.csr
+*.der
+*.key
+*.p12
+*.p7b
+*.pem
+*.pfx
+*.pkcs12
+*.ppk
+*_dsa
+*_ecdsa
+*_ed25519
+*_rsa
