@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+   <head>
+       <title>LetsHang</title>
+       <meta name="description" content="website description" />
+       <meta name="keywords" content="website keywords, website keywords" />
+       <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+       <link rel="stylesheet" type="text/css" href="../static/style.css" />
+       <!-- modernizr enables HTML5 elements and feature detects -->
+       <script type="text/javascript" src="../static/modernizr-1.5.min.js"></script>
+       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+       <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true">
+       </script>
+   </head>
+
+   <body>
+       <div id="main">
+  <header>
+    <div id="strapline">
+      <div id="welcome_slogan">
+        <h3>LetsHang</h3>
+      </div><!--close welcome_slogan-->
+    </div><!--close strapline-->    
+    <nav>
+      <div id="menubar">
+        <ul id="nav">
+          <li><a href="/maps">Home</a></li>
+          <li><a href="/maps_free">Only Free</a></li>
+          <li class="current"><a href="/batch">Batch Analysis</a></li>
+          <li><a href="/slidedeck">Slide Deck</a></li>
+        </ul>
+      </div><!--close menubar-->  
+    </nav>
+  </header>
+  <div id="site_content">
+    <div id="content">
+      <div class="content_item">
+      
+       {% block content %}{% endblock %}
+        <footer>
+    <span style="float: left; color:#FFF">
+      &nbsp&nbsp&nbsp&nbsp Ali AlShehab
+    </span> 
+    <span style="float: right; color:#FFF">
+      <a href="mailto:ali.s.alshehab@gmail.com">Email</a>     |
+      <a href="https://github.com/alialshehab">Github</a>     |
+            <a href="https://www.linkedin.com/in/alialshehab">Linkedin</a>&nbsp&nbsp&nbsp&nbsp
+    </span>
+        </footer> 
+       </div>   
+       </div>
+       </div>
+       <!-- Bootstrap core JavaScript
+       ================================================== -->
+       <!-- Placed at the end of the document so the pages load faster -->
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+       <script src="../static/js/bootstrap.min.js"></script>
+       <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+       
+       <!-- For HighCharts -->
+       {% block highcharts %}{% endblock %}
+   </body>
+</html>
+{% block scripts %}{% endblock %}
