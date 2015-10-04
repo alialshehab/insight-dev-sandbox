@@ -21,7 +21,7 @@ var markers = [];
 var map;
 function initialize() {
     var mapOptions = {
-	zoom: 12,
+	zoom: 14,
 	center: NYC
     };
     map = new google.maps.Map(document.getElementById('map-canvas'),
@@ -38,7 +38,7 @@ function update_values() {
                 if (data.result[i].status == "False") {
 	               addMarker(new google.maps.LatLng(user_data[i].latitude, user_data[i].longitude), '<p>Name: '+user_data[i].name+'</p><p> Steps: '+user_data[i].steps+'</p>');
 		        }else {
-                    addMarker2(new google.maps.LatLng(user_data[i].latitude, user_data[i].longitude));
+                    addMarker2(new google.maps.LatLng(user_data[i].latitude, user_data[i].longitude), '<p>Name: '+user_data[i].name+'</p><p> Steps: '+user_data[i].steps+'</p>');
             } 
           }
             });
@@ -60,14 +60,7 @@ function drop(lat, lng) {
     addMarker(point);
     addMarker2(point);
 }
-// function addMarker(position) {
-//     markers.push(new google.maps.Marker({
-// 	position: position,
-// 	map: map,
-// 	icon: pinImage,
-// 	shadow: pinShadow
-//     }));
-// }
+
 function addMarker(position,i) {
     var m = new google.maps.Marker({
     position: position,
@@ -83,13 +76,20 @@ function addMarker(position,i) {
     });
     markers.push(m);
 }
-function addMarker2(position) {
-    markers.push(new google.maps.Marker({
+function addMarker2(position,i) {
+    var m = new google.maps.Marker({
     position: position,
     map: map,
     icon: pinImage2,
     shadow: pinShadow
-    }));
+    });
+    google.maps.event.addListener(m, "click", function(event) {
+        var infowindow = new google.maps.InfoWindow({
+            content: i.toString()
+        });
+        infowindow.open(map, m);
+    });
+    markers.push(m);
 }
 function clearMarkers() {
     for (var i = 0; i < markers.length; i++) {

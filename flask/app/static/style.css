@@ -152,7 +152,7 @@ nav
 #menubar
 { 
   font: normal 150% 'Calibri', sans-serif;
-  width: 800px;
+  width: 540px;
   height: 55px;
   padding-top: 10px;
   text-align: center; 
@@ -172,7 +172,7 @@ ul#nav li a
 { float: left;
   font: bold 130% 'Calibri', sans-serif;
   height: 15px;
-  margin: 8px 20px 0 0;
+  margin: 8px 10px 0 10px;
   text-shadow: 0px 1px 0px #000;
   padding: 0px 20px 10px 20px;
   background: transparent; 

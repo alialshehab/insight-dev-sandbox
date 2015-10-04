@@ -14,6 +14,7 @@ log = logging.getLogger('b')
 
 log.debug("creating keyspace...")
 
+#Create Keyspace and table
 rows = session.execute("SELECT keyspace_name FROM system.schema_keyspaces")
 if KEYSPACE in [row[0] for row in rows]:
     log.debug("There is an existing keyspace...")
@@ -40,50 +41,25 @@ else:
         )
         """)
 
-#query = SimpleStatement("""
-#   INSERT INTO mytable (name, latitude, longitude)
-#    VALUES (%(key)s, %(a)s, %(b)s)
-#    """, consistency_level=ConsistencyLevel.ONE)
-#prepared = session.prepare("""
-#    INSERT INTO mytable (name, latitude, longitude)
-#    VALUES (?, ?, ?)
-#    """)
-
 class myBolt(SimpleBolt):
 
     OUTPUT_FIELDS = ['data']
 
     def initialize(self):
-#        self.unoccCabs = {}
         self.i = 0
 
     def process_tuple(self, tup):
         result, = tup.values
-        #cabID, lat, lng, occ, timestamp = result.split(",")
+        #Get the values 
         for k, value in result.items():
             data = value
         name, timestamp, latitude, longitude, availability, steps = data.split(";")
 
-        #if (occ != '\N'):  # check to ensure that there are no null values
-        #    if int(occ) == 0:
-        #        self.unoccCabs[cabID] = {'c:lat': lat, 'c:lng': lng}  # add unoccupied cab to table
-        #    else:
-        #        if int(occ) == 1:
-        #            if (cabID in self.unoccCabs.keys()):
-        #                del self.unoccCabs[cabID]
-        #                #minuteTbl.delete('StormData', columns=['c:' + cabID]) # remove cab from table if it is now occupied
-#        if availability == True:
         log.debug(name + "," + timestamp + "," + latitude + "," + longitude + "," + availability + ","+steps + ", inserting %d into cassandra..." % self.i)
-#        session.execute(query, dict(key=name, a=latitude, b=longitude))
+    
+    #Insert into cassandra
 	session.execute("""INSERT INTO mytable (name, latitude, longitude, status, steps) VALUES (%s, %s, %s, %s, %s)""", (name, float(latitude), float(longitude), availability, int(steps)))
 	self.i +=1
-
-    #def process_tick(self):
-    #    cur_cabs = self.unoccCabs
-    #    colDict = {}
-    #    for key, val in cur_cabs.iteritems():
-    #        colDict['c:' + key] = json.dumps(val) # Add currently available cabs to HBase
-    #    #minuteTbl.put('StormData', colDict)
 
 if __name__ == '__main__':
     logging.basicConfig(
