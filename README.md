@@ -16,7 +16,8 @@
   - Database
   - Front End
 4. Cluster Setup
-5. Future Work
+5. Dependencies
+6. Future Work
 7. Acknowledgements
 
 #1. Introduction
@@ -48,7 +49,11 @@ To test the application, a python program was used to produce a real time stream
 * Database: Cassandra was used with two tables. The aim was to have the realtime information immediately available able to be queried from the API apart from the batch processing table which gets updated less frequently by a cron every hour. Cassandra presented itself as the ideal database for the purposes since the application presents time series data and availablility is important for social applications.
 	
 * Front-End Application: I used Flask for website handling, with Bootstrap for the template, as well as Google Maps and Hichart for displaying user locations and batch jobs.
-	
+
+#4. Cluster Setup
+
+![Cluster Setup] (images/cluster.png)
+
 #5. Dependencies
 
 I used the following open-source packages for connectors between the technologies outlined above:
@@ -57,7 +62,7 @@ I used the following open-source packages for connectors between the technologie
 
 #6. Future Work
 	
-I would like to implemnt a reactive feature that notifies users when they are closer to each other and free. Elastic search could be used to achieve this functionality
+I would like to implemnt a reactive feature that notifies users when they are closer to each other and free. Elastic search could be used to achieve this functionality.
 
 #7. Acknowledgements
 
