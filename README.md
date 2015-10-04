@@ -21,16 +21,12 @@
 
 #1. Introduction
 
-Live music recommendation engine for events in your area based on bands you like. Developed in collaboration with Eric White, an Insight Data Science fellow.
-
 LetsHang is an application that uses users geolocation data and availability status to help friends hangout and encourage each other to excercise "walk" more. The app provides a map with users realtime location, availability status and the total number of steps walked by the user in a given day. It also provides a graph showing the number of users available at different hours of the day.
 
 ![Realtime Demo] (images/map.png)
 ![Batch Demo] (images/graph.png)
 
 #2. Data Sources
-
-Data was collected from Songkick's Events API and Echonest's Artists API. We collected data on upcoming events in various metro areas and characterized their 'sound' through term frequencies for genres of music via Echonest's term frequency data, which gives a frequency and weight for each genre provided.
 
 Data sources for this application are user's (friends) the gps location and availability status. The gps location is provided by the users mobile device and the availability status is provided manually by the user or through the users calender.
 
