@@ -25,8 +25,8 @@ Live music recommendation engine for events in your area based on bands you like
 
 LetsHang is an application that uses users geolocation data and availability status to help friends hangout and encourage each other to excercise "walk" more. The app provides a map with users realtime location, availability status and the total number of steps walked by the user in a given day. It also provides a graph showing the number of users available at different hours of the day.
 
-![Realtime Demo] (images/map.jpg)
-![Batch Demo] (images/graph.jpg)
+![Realtime Demo] (images/map.png)
+![Batch Demo] (images/graph.png)
 
 #2. Data Sources
 
@@ -38,7 +38,7 @@ To test the application, a python program was used to produce a real time stream
 
 #3. Pipeline
 
-![pipeline Demo] (images/pipeline.jpg)
+![pipeline Demo] (images/pipeline.png)
 
 
 * Ingestion: The producers published the data to Apache Kafaka with 4 brokers which were setup on a cluster of 4 nodes. The data was split into 4 partitions with a replication factor of 2. Data was then consumed by camus (ingestion framework) that pushed the information to HDFS for batch processing and a Apache Storm for realtime streaming and processing. Ingestion was coordinated using Zookeeper and monitored using Kafka Manager. The measured throughput was 10GB/hr.
